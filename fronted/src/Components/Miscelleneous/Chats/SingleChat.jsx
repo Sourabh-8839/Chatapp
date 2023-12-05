@@ -18,7 +18,6 @@ import GroupChatModal from './GroupChatModal';
 import { SendMessage, fetchAllMessages } from '../../../service/api';
 import ScrollableChat from './ScrollableChat';
 import animation from '../../../Animation/typing.json';
-import { set } from 'mongoose';
 var selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
