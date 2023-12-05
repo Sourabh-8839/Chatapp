@@ -32,7 +32,7 @@ import { GetUser, setConversation } from '../../service/api';
 
 import { getSender } from '../Config/ChatLogics';
 
-import NotificationBadge from 'react-notification-badge';
+// import NotificationBadge from 'react-notification-badge';
 import { Effect } from 'react-notification-badge';
 
 const SideDrawer = () => {
@@ -160,14 +160,14 @@ const SideDrawer = () => {
         <Box>
           <Menu>
             <MenuButton>
-              <NotificationBadge
+              {/* <NotificationBadge
                 count={notification.length}
                 effect={Effect.SCALE}
-              />
+              /> */}
 
               <BellIcon fontSize={'2xl'} m={1} />
             </MenuButton>
-            <MenuList pl={2} style={{ cursor: 'pointer' }}>
+            {/* <MenuList pl={2} style={{ cursor: 'pointer' }}>
               {!notification.length && 'no new Message'}
               {notification.map((notif) => (
                 <menuItem
@@ -186,7 +186,7 @@ const SideDrawer = () => {
                       )}`}
                 </menuItem>
               ))}
-            </MenuList>
+            </MenuList> */}
           </Menu>
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
