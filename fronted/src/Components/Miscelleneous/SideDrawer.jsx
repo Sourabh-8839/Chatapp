@@ -32,9 +32,6 @@ import { GetUser, setConversation } from '../../service/api';
 
 import { getSender } from '../Config/ChatLogics';
 
-// import NotificationBadge from 'react-notification-badge';
-import { Effect } from 'react-notification-badge';
-
 const SideDrawer = () => {
   const [search, setSearch] = useState('');
   const [searchResult, setSearchResult] = useState([]);
@@ -160,33 +157,8 @@ const SideDrawer = () => {
         <Box>
           <Menu>
             <MenuButton>
-              {/* <NotificationBadge
-                count={notification.length}
-                effect={Effect.SCALE}
-              /> */}
-
               <BellIcon fontSize={'2xl'} m={1} />
             </MenuButton>
-            {/* <MenuList pl={2} style={{ cursor: 'pointer' }}>
-              {!notification.length && 'no new Message'}
-              {notification.map((notif) => (
-                <menuItem
-                  key={notif._id}
-                  onClick={() => {
-                    setSelectedChat(notif.chatId);
-                    setNotification(notification.filter((n) => n !== notif));
-                  }}
-                >
-                  {notif.chatId.isGroupChat
-                    ? `New Message in ${notif.chatId.chatName}`
-                    : // : 'heelo'
-                      `new Message From ${getSender(
-                        account,
-                        notif.chatId.users
-                      )}`}
-                </menuItem>
-              ))}
-            </MenuList> */}
           </Menu>
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
