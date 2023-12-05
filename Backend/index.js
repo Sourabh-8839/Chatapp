@@ -45,12 +45,6 @@ Connection()
     console.log(err);
   });
 
-// const io = new Server(server, {
-//   cors: {
-//     origin: 'https://chatapp-jmne.onrender.com',
-//   },
-// });
-
 io.on('connection', (socket) => {
   console.log('User Connected');
 
