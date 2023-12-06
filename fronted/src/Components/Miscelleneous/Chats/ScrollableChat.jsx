@@ -9,6 +9,7 @@ import {
   isSameUser,
 } from '../../Config/ChatLogics';
 import { Avatar, Tooltip } from '@chakra-ui/react';
+import ImageMessages from './ImageMessages';
 
 const ScrollableChat = ({ messages }) => {
   const { account } = ChatProvider();
@@ -35,6 +36,7 @@ const ScrollableChat = ({ messages }) => {
                   />
                 </Tooltip>
               ))}
+
             <span
               style={{
                 backgroundColor: `${
@@ -43,11 +45,15 @@ const ScrollableChat = ({ messages }) => {
                 marginLeft: isSameSenderMargin(messages, m, i, account._id),
                 marginTop: isSameUser(messages, m, i, account._id) ? 3 : 10,
                 borderRadius: '20px',
-                padding: '5px 15px',
+                padding: '5px 10px',
                 maxWidth: '75%',
               }}
             >
-              {m.content}
+              {m.type !== 'text' ? (
+                <ImageMessages src={m.content} format={m.type} />
+              ) : (
+                m.content
+              )}
             </span>
           </div>
         ))}

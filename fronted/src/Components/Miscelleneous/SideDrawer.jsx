@@ -21,6 +21,8 @@ import {
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 
+import './Chats/style.css';
+
 import { BellIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { ChatProvider } from '../../Context/ContextProvider';
 
@@ -129,7 +131,6 @@ const SideDrawer = () => {
     }
   };
 
-  console.log(account._id);
   return (
     <>
       <Box
@@ -157,8 +158,33 @@ const SideDrawer = () => {
         <Box>
           <Menu>
             <MenuButton>
-              <BellIcon fontSize={'2xl'} m={1} />
+              <div
+                className={notification.length !== 0 ? 'bellIcon' : 'none'}
+                current-counter={notification.length}
+              >
+                <BellIcon fontSize={'4xl'} mr={5} />
+              </div>
             </MenuButton>
+            <MenuList pl={2} style={{ cursor: 'pointer' }}>
+              {!notification.length && 'no new Message'}
+              {notification.map((notif) => (
+                <menuItem
+                  key={notif._id}
+                  onClick={() => {
+                    setSelectedChat(notif.chatId);
+                    setNotification(notification.filter((n) => n !== notif));
+                  }}
+                >
+                  {notif.chatId.isGroupChat
+                    ? `New Message in ${notif.chatId.chatName}`
+                    : // : 'heelo'
+                      `new Message From ${getSender(
+                        account,
+                        notif.chatId.users
+                      )}`}
+                </menuItem>
+              ))}
+            </MenuList>
           </Menu>
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>

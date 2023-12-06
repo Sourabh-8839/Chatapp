@@ -3,7 +3,7 @@ import axios from 'axios';
 const axiosInstance = axios.create({
   baseURL: 'https://chatapp-j7en.onrender.com/chatapp',
 
-  // baseURL: 'https://chatapp-jmne.onrender.com',
+  // baseURL: 'http://localhost:5000/chatapp',
 });
 
 export const addUser = async (data) => {

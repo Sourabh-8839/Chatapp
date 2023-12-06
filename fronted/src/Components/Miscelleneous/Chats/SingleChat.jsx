@@ -8,7 +8,6 @@ import {
   Input,
   Spinner,
   Text,
-  flexbox,
   useToast,
 } from '@chakra-ui/react';
 import { ArrowBackIcon, AttachmentIcon } from '@chakra-ui/icons';
@@ -18,6 +17,7 @@ import GroupChatModal from './GroupChatModal';
 import { SendMessage, fetchAllMessages } from '../../../service/api';
 import ScrollableChat from './ScrollableChat';
 import animation from '../../../Animation/typing.json';
+
 var selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -26,7 +26,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [newMessage, setNewMessage] = useState('');
   const [typing, setTyping] = useState(false);
   const [istyping, setIsTyping] = useState(false);
-  const [file, setFile] = useState();
+  const [file, setFile] = useState('text');
 
   const [socketConnected, setSocketConnected] = useState(false);
 
@@ -131,6 +131,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         const contentMessage = {
           content: newMessage,
           chatId: selectedChat._id,
+          type: file,
         };
 
         const data = await SendMessage(contentMessage, config);
@@ -194,7 +195,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       })
         .then((res) => res.json())
         .then((data) => {
+          setFile('image');
           setNewMessage(data.url.toString());
+
           setLoading(false);
         })
         .catch((err) => console.log(err));
@@ -277,7 +280,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
               <div className='container'>
                 <label htmlFor='fileInput'>
-                  <AttachmentIcon className='clip' />
+                  <AttachmentIcon />
                 </label>
 
                 <input
@@ -288,7 +291,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 />
                 <Input
                   variant='filled'
-                  bg='#E0E0E0'
+                  // bg='#E0E0E0'
                   placeholder='Enter a message..'
                   value={newMessage}
                   onChange={typingHandler}

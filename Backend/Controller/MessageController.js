@@ -4,8 +4,9 @@ const User = require('../models/User');
 
 const SendMessage = async (req, res) => {
   try {
-    const { content, chatId } = req.body;
+    const { content, chatId, type } = req.body;
 
+    console.log(type);
     if (!content || !chatId) {
       return res.status(400).Json({ message: 'Invalid Data' });
     }
@@ -14,9 +15,12 @@ const SendMessage = async (req, res) => {
       sender: req.user._id,
       content: content,
       chatId: chatId,
+      type: type,
     };
 
     let message = await Message.create(newMessage);
+
+    console.log(message);
 
     message = await message.populate('sender', 'name pic');
 
