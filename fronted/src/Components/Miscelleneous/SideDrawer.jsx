@@ -143,14 +143,9 @@ const SideDrawer = () => {
         borderWidth='5px'
       >
         <Tooltip hasArrow label='Search User' bg='gray.300' color='black'>
-          <Button>
+          <Button onClick={onOpen}>
             <i class='fa-solid fa-magnifying-glass'></i>
-            <Text
-              display={{ base: 'none', md: 'flex' }}
-              px={4}
-              onClick={onOpen}
-            >
-              {' '}
+            <Text display={{ base: 'none', md: 'flex' }} px={4}>
               Search
             </Text>
           </Button>
