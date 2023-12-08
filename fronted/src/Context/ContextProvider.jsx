@@ -32,9 +32,6 @@ const AccountProvider = ({ children }) => {
     socket.current = io('https://chatapp-j7en.onrender.com');
 
     // socket.current = io('http://localhost:5000');
-
-    //for deployment
-    // socket.current = io('https://chatapp-jmne.onrender.com');
   }, []);
 
   return (
