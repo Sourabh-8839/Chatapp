@@ -11,12 +11,23 @@ const Connection = require('./DbConnection/Db');
 const routes = require('./Routes/routes.js');
 // const path = require('path');
 
+const cron = require('node-cron');
+
+cron.schedule('* * 23 * * ', async () => {
+  const data = await Message.find();
+
+  await BackupTable.insertMany(data);
+
+  await Message.deleteMany({});
+});
+
 const server = require('http').createServer(App);
 
 const { CronJob } = require('cron');
 const Message = require('./models/Message.js');
 const BackupTable = require('./models/backup.js');
 const { Db } = require('mongodb');
+const { create } = require('domain');
 
 const io = require('socket.io')(server, {
   cors: {

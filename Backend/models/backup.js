@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 
 const Backup = mongoose.Schema(
   {
+    _id: {
+      type: mongoose.Schema.Types.ObjectId,
+    },
     sender: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
     },
     content: {
       type: String,
@@ -12,7 +14,6 @@ const Backup = mongoose.Schema(
     },
     chatId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Chat',
     },
     type: {
       type: String,
