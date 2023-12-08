@@ -29,7 +29,7 @@ const AccountProvider = ({ children }) => {
   const socket = useRef();
 
   useEffect(() => {
-    socket.current = io('https://chatapp-j7en.onrender.com');
+    socket.current = io('https://chatapp-o0u2.onrender.com');
 
     // socket.current = io('http://localhost:5000');
   }, []);
